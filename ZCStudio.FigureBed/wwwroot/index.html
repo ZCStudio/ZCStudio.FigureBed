@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>图床</title>
+</head>
+<body>
+    <h1>图床</h1>
+    <a href="#" id="browseButton">Select files</a>
+    <p id="p1" draggable="true" ondragstart="dragstart_handler(event);">This element is draggable.</p>
+    <script>
+        function dragstart_handler(ev) {
+            console.log("dragStart");
+            // Add the target element's id to the data transfer object
+            ev.dataTransfer.setData("text/plain", ev.target.id);
+        }
+    </script>
+
+
+    <script src="resumable.js"></script>
+    <script>
+        var r = new Resumable({
+            target: 'test.html'
+        });
+
+
+        r.assignBrowse(document.getElementById('browseButton'));
+
+        r.on('fileSuccess', function (file) {
+            console.debug('fileSuccess', file);
+        });
+        r.on('fileProgress', function (file) {
+            console.debug('fileProgress', file);
+        });
+        r.on('fileAdded', function (file, event) {
+            r.upload();
+            console.debug('fileAdded', event);
+        });
+        r.on('filesAdded', function (array) {
+            r.upload();
+            console.debug('filesAdded', array);
+        });
+        r.on('fileRetry', function (file) {
+            console.debug('fileRetry', file);
+        });
+        r.on('fileError', function (file, message) {
+            console.debug('fileError', file, message);
+        });
+        r.on('uploadStart', function () {
+            console.debug('uploadStart');
+        });
+        r.on('complete', function () {
+            console.debug('complete');
+        });
+        r.on('progress', function () {
+            console.debug('progress');
+        });
+        r.on('error', function (message, file) {
+            console.debug('error', message, file);
+        });
+        r.on('pause', function () {
+            console.debug('pause');
+        });
+        r.on('cancel', function () {
+            console.debug('cancel');
+        });
+    </script>
+</body>
+</html>
