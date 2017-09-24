@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 using ZCStudio.FigureBed.Configuration;
 
 namespace ZCStudio.FigureBed
@@ -19,10 +15,9 @@ namespace ZCStudio.FigureBed
                   .AddEnvironmentVariables()
                   .AddCommandLine(args)
                   .Build();
-            Config.configroot = config;
 
             var host = new WebHostBuilder()
-                .UseEnvironment("Development")
+                //.UseEnvironment("Development")
                 //.UseEnvironment("IsProduction")
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())

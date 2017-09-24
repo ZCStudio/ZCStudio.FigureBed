@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ZCStudio.FigureBed.Models
+﻿namespace ZCStudio.FigureBed.Models
 {
     public class ErrorViewModel
     {

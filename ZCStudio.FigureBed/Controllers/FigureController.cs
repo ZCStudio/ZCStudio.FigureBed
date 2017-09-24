@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ZCStudio.FigureBed.Models;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ZCStudio.FigureBed.Controllers
 {
     public class FigureController : Controller
     {
-
         public IActionResult Index()
         {
             return RedirectToAction("Search");
@@ -20,6 +13,5 @@ namespace ZCStudio.FigureBed.Controllers
         {
             return View();
         }
-
     }
 }

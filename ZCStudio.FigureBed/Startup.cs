@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using ZCStudio.FigureBed.Configuration;
 
 namespace ZCStudio.FigureBed
 {
@@ -19,6 +16,8 @@ namespace ZCStudio.FigureBed
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile(Path.Combine("Config", "server.json"), optional: false, reloadOnChange: true)
+                .AddJsonFile(Path.Combine("Config", $"server.{env.EnvironmentName}.json"), optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -31,6 +30,7 @@ namespace ZCStudio.FigureBed
             // Add framework services.
             services.AddMvc();
             services.AddSingleton(Configuration);
+            services.Configure<Config>(Configuration.GetSection("Config"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

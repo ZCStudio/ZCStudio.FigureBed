@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using ZCStudio.FigureBed.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using ZCStudio.FigureBed.Models;
 
 namespace ZCStudio.FigureBed.Controllers
 {
@@ -18,7 +14,7 @@ namespace ZCStudio.FigureBed.Controllers
         [Route("[controller]/[action]/{statusCode=404}")]
         public IActionResult Code(string statusCode)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier ,StatusCode= statusCode });
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, StatusCode = statusCode });
         }
     }
 }

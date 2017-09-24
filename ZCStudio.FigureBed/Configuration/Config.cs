@@ -1,25 +1,18 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ZCStudio.FigureBed.Configuration
 {
     public class Config
     {
-        internal const string defaultPath = "files";
-        internal static IConfigurationRoot configroot { get; set; }
+        public string RootPath { get; set; } = "files";
 
-        internal static string DocPath => configroot["Files:RootPath"]??defaultPath;
-
-        internal static string GetDocPath()
+        internal string GetDocPath()
         {
-            return Path.Combine(AppContext.BaseDirectory, DocPath);
+            return Path.Combine(AppContext.BaseDirectory, RootPath);
         }
 
-        internal static string GetDocPath(string filepath)
+        internal string GetDocPath(string filepath)
         {
             return Path.Combine(GetDocPath(), filepath);
         }
