@@ -260,5 +260,5 @@ paket-files/
 __pycache__/
 *.pyc
 
-# Development files
+# 开发文件
 *.Development.json
