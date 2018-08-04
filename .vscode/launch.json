@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/ZCStudio.FigureBed/bin/Debug/netcoreapp2.0/ZCStudio.FigureBed.dll",
+            "program": "${workspaceFolder}/ZCStudio.FigureBed/bin/Debug/netcoreapp2.1/ZCStudio.FigureBed.dll",
             "args": [],
             "cwd": "${workspaceFolder}/ZCStudio.FigureBed",
             "stopAtEntry": false,
